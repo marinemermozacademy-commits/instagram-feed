@@ -1,6 +1,9 @@
 name: Update Instagram Feed
 
 on:
+concurrency:
+  group: instagram-feed
+  cancel-in-progress: true
   schedule:
     - cron: "0 6 * * *" # 1 fois par jour
 
