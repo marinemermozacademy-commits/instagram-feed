@@ -1,0 +1,29 @@
+name: Update Instagram Feed
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # 1 fois par jour
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Generate HTML
+        run: node generate.js
+
+      - name: Commit
+        run: |
+          git config --global user.name "bot"
+          git config --global user.email "bot@github.com"
+          git add index.html
+          git commit -m "update feed" || echo "no changes"
+          git push
