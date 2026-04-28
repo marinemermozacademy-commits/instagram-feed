@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const FEED_URL = "https://feeds.behold.so/ggzF9fLF0zKUC5DAK1q2.json";
+const FEED_URL = "https://feeds.behold.so/ggzF9fLF0zKUC5DAK1q2";
 
 async function main() {
   const res = await fetch(FEED_URL);
