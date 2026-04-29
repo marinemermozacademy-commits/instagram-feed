@@ -6,6 +6,10 @@ async function main() {
   const res = await fetch(FEED_URL);
   const data = await res.json();
 
+  console.log("TOTAL POSTS:", data.posts?.length);
+  console.log("FIRST POST ID:", data.posts?.[0]?.id);
+  console.log("FIRST POST DATE:", data.posts?.[0]?.timestamp);
+
   const posts = data.posts.slice(0, 6);
 
   const html = `
