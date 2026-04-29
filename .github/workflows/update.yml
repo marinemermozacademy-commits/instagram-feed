@@ -23,10 +23,16 @@ jobs:
       - name: Generate HTML
         run: node generate.js
 
-      - name: Commit
-        run: |
-          git config --global user.name "bot"
-          git config --global user.email "bot@github.com"
-          git add index.html
-          git commit -m "update feed" || echo "no changes"
-          git push
+     - name: Commit and push changes
+  run: |
+    git config user.name "github-actions"
+    git config user.email "github-actions@github.com"
+
+    git add index.html
+
+    git status
+
+    git diff --cached --quiet && echo "No changes" && exit 0
+
+    git commit -m "update feed $(date +'%Y-%m-%d %H:%M:%S')"
+    git push origin main
