@@ -22,8 +22,9 @@ jobs:
 
       - name: Commit & push index.html
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add index.html
-          git commit -m "update instagram feed" || echo "no changes"
-          git push origin main
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add index.html
+        git diff --cached --quiet && echo "no changes" && exit 0
+        git commit -m "update instagram feed"
+        git push origin main
