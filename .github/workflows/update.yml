@@ -19,8 +19,10 @@ jobs:
         with:
           node-version: 18
 
-      - name: Generate HTML
-        run: node generate.js
+      - name: Debug write
+        run: |
+            echo "TEST $(date)" > index.html
+            cat index.html
 
       - name: Commit & push index.html
         run: |
