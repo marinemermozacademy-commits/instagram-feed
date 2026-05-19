@@ -25,44 +25,31 @@ body {
   margin: 0;
   background: #000;
   overflow: hidden;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  min-height: 100vh;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
   gap: 10px;
 
   width: 95vw;
-  max-width: 1920px;
+  margin: 20px auto;
 }
 
 .item {
-  position: relative;
-
-  width: 100%;
-
   aspect-ratio: 4 / 5;
 
   background: #111;
-
   overflow: hidden;
   border-radius: 10px;
 }
 
 .item img {
   width: 100%;
-  height: 100%;
 
-  object-fit: contain;
+  object-fit: cover;
 
-  background: #000;
+  display: block;
 }
 </style>
 
