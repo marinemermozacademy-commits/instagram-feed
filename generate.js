@@ -58,7 +58,7 @@ body {
 
 <div class="grid">
 ${posts.map(p => {
-  const img = p.sizes?.medium?.mediaUrl || p.mediaUrl;
+  const img = p.mediaUrl;
   return `<div class="item"><img src="${img}" /></div>`;
 }).join("")}
 </div>
