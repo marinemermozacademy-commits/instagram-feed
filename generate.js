@@ -28,27 +28,23 @@ body {
 }
 
 .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   width: 100vw;
   height: 100vh;
-
-  display: flex;
-  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .item {
-  width: 33.333%;   /* 3 colonnes */
-  height: 50%;      /* 2 lignes = 6 items */
-
-  overflow: hidden;
-  background: #000;
+  width: 100%;
+  height: 100%;
 }
 
 .item img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-  display: block;
 }
 </style>
 
