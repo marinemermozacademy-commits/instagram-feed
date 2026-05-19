@@ -17,7 +17,7 @@ async function main() {
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1920, height=1080">
+<meta name="viewport" content="width=1080, height=1350">
 <title>Instagram Feed</title>
 
 <style>
@@ -62,7 +62,7 @@ ${posts.map(p => {
 </html>
 `;
 
-  fs.writeFileSync("index.html", html);
+  fs.writeFileSync("feed.html", html);
 }
 
 main();
