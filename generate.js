@@ -28,34 +28,26 @@ body {
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-
   width: 100vw;
-  height: 100vh;   /* 👈 IMPORTANT */
-  padding: 10px;
-  box-sizing: border-box;
+  height: 100vh;
+
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .item {
-  position: relative;
-
-  aspect-ratio: 4 / 5;
+  width: 33.333%;   /* 3 colonnes */
+  height: 50%;      /* 2 lignes = 6 items */
 
   overflow: hidden;
   background: #000;
 }
 
 .item img {
-  position: absolute;
-  inset: 0;
-
   width: 100%;
   height: 100%;
 
   object-fit: cover;
-
   display: block;
 }
 </style>
