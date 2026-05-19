@@ -32,20 +32,27 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 
-  width: 95vw;
-  margin: 20px auto;
+  width: 100vw;
+  height: 100vh;   /* 👈 IMPORTANT */
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .item {
+  position: relative;
+
   aspect-ratio: 4 / 5;
 
-  background: #111;
   overflow: hidden;
-  border-radius: 10px;
+  background: #000;
 }
 
 .item img {
+  position: absolute;
+  inset: 0;
+
   width: 100%;
+  height: 100%;
 
   object-fit: cover;
 
