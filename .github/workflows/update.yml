@@ -21,20 +21,6 @@ jobs:
         with:
           node-version: 18
 
-      # 🔥 TEST : on force un changement visible
-      - name: Generate test index.html
-        run: |
-          echo "<!-- updated $(date -u) -->" > index.html
-          echo "<h1>TEST $(date -u)</h1>" >> index.html
-          cat index.html
-
-      # 🔍 DEBUG pour comprendre l’état Git
-      - name: Git status debug
-        run: |
-          git status
-          git diff
-
-      # 🚀 commit + push SANS logique cachée
       - name: Commit & push index.html
         run: |
           git config user.name "github-actions"
@@ -42,6 +28,6 @@ jobs:
 
           git add index.html
 
-          git commit -m "update instagram feed $(date -u)" || echo "no changes to commit"
+          git commit -m "update instagram feed $(date -u)" || true
 
           git push origin main
