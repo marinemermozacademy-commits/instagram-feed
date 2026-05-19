@@ -13,26 +13,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          ref: main
+          fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
 
       - name: Generate HTML
         run: node generate.js
 
-      - name: Commit & push feed.html
+      - name: Commit & push index.html
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git add feed.html
+          git add index.html
 
-          git commit -m "update instagram feed $(date -u)" || true
+          git diff --cached --quiet && echo "no changes" && exit 0
 
-          git push origin HEAD:main
+          git commit -m "update feed $(date -u)"
+          git push origin main
