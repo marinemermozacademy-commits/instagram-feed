@@ -25,26 +25,44 @@ body {
   margin: 0;
   background: #000;
   overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  width: 100vw;
-  height: 100vh;
-  gap: 5px;
+
+  gap: 10px;
+
+  width: 95vw;
+  max-width: 1920px;
 }
 
 .item {
+  position: relative;
+
   width: 100%;
-  height: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  background: #111;
+
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+
+  object-fit: contain;
+
+  background: #000;
 }
 </style>
 
