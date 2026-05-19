@@ -13,17 +13,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Debug write
+      # 🔥 TEST : on force un changement visible
+      - name: Generate test index.html
         run: |
-            echo "TEST $(date)" > index.html
-            cat index.html
+          echo "<!-- updated $(date -u) -->" > index.html
+          echo "<h1>TEST $(date -u)</h1>" >> index.html
+          cat index.html
 
+      # 🔍 DEBUG pour comprendre l’état Git
+      - name: Git status debug
+        run: |
+          git status
+          git diff
+
+      # 🚀 commit + push SANS logique cachée
       - name: Commit & push index.html
         run: |
           git config user.name "github-actions"
@@ -31,7 +42,6 @@ jobs:
 
           git add index.html
 
-          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "update instagram feed $(date -u)" || echo "no changes to commit"
 
-          git commit -m "update instagram feed"
           git push origin main
