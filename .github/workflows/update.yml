@@ -5,15 +5,6 @@ on:
     - cron: "0 6 * * *"
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: instagram-feed
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,20 +19,10 @@ jobs:
       - name: Generate HTML
         run: node generate.js
 
-      - name: Verify output
-        run: ls -la && cat index.html
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages
-
-    steps:
-      - uses: actions/deploy-pages@v5
+      - name: Commit & push index.html
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add index.html
+          git commit -m "update instagram feed" || echo "no changes"
+          git push origin main
