@@ -62,7 +62,7 @@ ${posts.map(p => {
 </html>
 `;
 
-  fs.writeFileSync("feed.html", html);
+  fs.writeFileSync("index.html", html);
 }
 
 main();
