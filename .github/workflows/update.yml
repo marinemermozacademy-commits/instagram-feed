@@ -31,7 +31,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git add index.html
+          git add feed.html
 
           git commit -m "update instagram feed $(date -u)" || true
 
